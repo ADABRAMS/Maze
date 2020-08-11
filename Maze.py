@@ -118,7 +118,7 @@ class Maze:
         pass
 
     def setMatrixValueAt(self, pos, value):
-        x = int((pos[0] + 180) / BLOCKSIZE)
+        x = int((pos[0] + SIZE/2 - BLOCKSIZE) / BLOCKSIZE)
         y = int((pos[1] - 180) / BLOCKSIZE)
         try:
             self.matrix[y][x] = value
