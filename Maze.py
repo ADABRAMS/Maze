@@ -135,10 +135,10 @@ class Maze:
     def neighbors(self):
         p = self.turtle.position()
         r = []
-        r.append((self.getMatrixValueAt((p[0] + 40, p[1])), EAST))
-        r.append((self.getMatrixValueAt((p[0], p[1] + 40)), NORTH))
-        r.append((self.getMatrixValueAt((p[0] - 40, p[1])), WEST))
-        r.append((self.getMatrixValueAt((p[0], p[1] - 40)), SOUTH))
+        r.append((self.getMatrixValueAt((p[0] + BLOCKSIZE*2, p[1])), EAST))
+        r.append((self.getMatrixValueAt((p[0], p[1] + BLOCKSIZE*2)), NORTH))
+        r.append((self.getMatrixValueAt((p[0] - BLOCKSIZE*2, p[1])), WEST))
+        r.append((self.getMatrixValueAt((p[0], p[1] - BLOCKSIZE*2)), SOUTH))
         return r
 
     def makeMaze(self):
