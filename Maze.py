@@ -2,7 +2,7 @@ import turtle
 import random
 
 SIZE = 400
-BLOCKSIZE = 20
+BLOCKSIZE = 10
 
 EAST = 0
 NORTH = 1
@@ -26,6 +26,7 @@ class Maze:
         self.turtle.goto(-(SIZE / 2 - BLOCKSIZE), SIZE / 2 - BLOCKSIZE)
         self.turtle.shape('square')
         self.turtle.color('white')
+        self.turtle.turtlesize(BLOCKSIZE/20, BLOCKSIZE/20, BLOCKSIZE/20)
         self.turtle.stamp()
         self.matrix[0][0] = 0
         self.depth = 0
@@ -107,8 +108,8 @@ class Maze:
 
     def getMatrixValueAt(self, pos):
         x = int((pos[0] + SIZE/2 - BLOCKSIZE) / BLOCKSIZE)
-        y = int((SIZE/2 - BLOCKSIZE - pos[1]) / BLOCKSIZE)
-        if x < 0 or x > 19 or y < 0 or y > 19:
+        y = int(((SIZE/2 - BLOCKSIZE) - pos[1]) / BLOCKSIZE)
+        if x < 0 or x > SIZE/BLOCKSIZE-1 or y < 0 or y > SIZE/BLOCKSIZE-1:
             return -1
         v = self.matrix[x][y]
         return v
@@ -119,7 +120,7 @@ class Maze:
 
     def setMatrixValueAt(self, pos, value):
         x = int((pos[0] + SIZE/2 - BLOCKSIZE) / BLOCKSIZE)
-        y = int((pos[1] - 180) / BLOCKSIZE)  ##here's the line giving me trouble.  changing 180 to SIZE/2 - BLOCKSIZE creates a fail.
+        y = int((pos[1] - (SIZE/2 - BLOCKSIZE)) / BLOCKSIZE)  ##here's the line giving me trouble.  changing 180 to SIZE/2 - BLOCKSIZE creates a fail.
         try:
             self.matrix[y][x] = value
         except():
@@ -157,3 +158,4 @@ class Maze:
                     self.depth = self.goal[1]
                 self.depth = self.depth + 1
                 self.makeMaze()
+                
