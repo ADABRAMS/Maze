@@ -119,7 +119,7 @@ class Maze:
 
     def setMatrixValueAt(self, pos, value):
         x = int((pos[0] + SIZE/2 - BLOCKSIZE) / BLOCKSIZE)
-        y = int((pos[1] - 180) / BLOCKSIZE)
+        y = int((pos[1] - 180) / BLOCKSIZE)  ##here's the line giving me trouble.  changing 180 to SIZE/2 - BLOCKSIZE creates a fail.
         try:
             self.matrix[y][x] = value
         except():
